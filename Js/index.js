@@ -85,6 +85,12 @@ addButton.addEventListener('click',function(){
 
     taskInput.value='';
 });
+taskInput.addEventListener('input', function() {
+    if (taskInput.classList.contains('input-error')) {
+        taskInput.classList.remove('input-error');
+        taskInput.placeholder = 'Add a new task';
+    }
+});
 // console.log(tasklist);
 // addButton.addEventListener('click',function(){
 //     const taskValue = taskInput.value.trim();
