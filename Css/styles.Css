@@ -90,7 +90,7 @@ html,body{
     overflow-y: auto;
     overflow-x: hidden;
 }
-#mn__sect02 h2{
+#main__sect02 h2{
     margin-bottom: 2vh;
     color: var(--brown);
 }
@@ -107,6 +107,11 @@ html,body{
 #task-input::placeholder{
     color: var(--mid-brwon);
 }
+/* #task-input.input-error {
+    border: 2px solid red !important;
+    color: red !important;
+} */
+
 #add-task-btn {
     height: 6vh;
     width: 20%;
@@ -198,4 +203,18 @@ html,body{
     align-items: center;
     color: var(--dark-brwon);
     flex-shrink: 0;
+}
+
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-4px); }
+  50% { transform: translateX(4px); }
+  75% { transform: translateX(-4px); }
+  100% { transform: translateX(0); }
+}
+
+.input-error {
+    border: 2px solid red !important;
+    color: red !important;
+    animation: shake 0.2s ease-in-out;
 }
