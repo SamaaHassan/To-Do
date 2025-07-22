@@ -353,7 +353,7 @@ html,body{
         font-size: 0.75em;
     }
 }  */
-  /*-------------Reset------------*/
+/*-------------Reset------------*/
 *{
     margin: 0;
     padding: 0;
@@ -367,11 +367,12 @@ html,body{
     --light-brwon:#A1887F;
     --dark-btn:#8D6E63;
     --sec-btn:#BCAAA4;
-    --bord:#A1887F;
+    --bord:#A1887F	;
     --hover:#6D4C41;
     --brown:#5D4037;
     --yellow:#ffc107;
     --dark-green:#28A745;
+
 }
 html,body{
     width: 100%;
@@ -406,7 +407,7 @@ html,body{
 }
 #main{
     width: 100%;
-    flex-grow: 1; /* <--- سيأخذ كل المساحة المتبقية بين الرأس والتذييل */
+    flex-grow: 1; /* <--- سيأخذ كل المساحة المتبقية بين الرأس والتذييل على الشاشات الكبيرة */
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -466,6 +467,7 @@ html,body{
 #task-input::placeholder{
     color: var(--mid-brwon);
 }
+
 #add-task-btn {
     height: 6vh;
     width: 20%;
@@ -494,7 +496,7 @@ html,body{
     min-height: 0; /* <--- مهم: يسمح لـ `task-list` بالتقلص/التمرير عندما يزيد محتواها عن المساحة المتاحة */
     display: flex; /* <--- لجعل عناصر القائمة مرنة */
     flex-direction: column; /* <--- لجعل عناصر القائمة تظهر بشكل عمودي */
-    gap: 1.5vh;
+    gap: 1.5vh; /* <--- لتحديد المسافة بين عناصر المهام */
 }
 .task-item {
     border: 1px solid var(--light-brwon);
@@ -504,6 +506,7 @@ html,body{
     background-color: var(--light-brwon);
     color: #fff;
     padding: 12px 15px;
+    /* تم إزالة margin-bottom هنا لأن الـ gap في #task-list يتعامل مع المسافات الآن */
     border-radius: 10px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     font-size: 1em;
@@ -540,7 +543,7 @@ html,body{
     cursor: pointer;
     font-weight: bold;
     font-size: 0.9em;
-    transition: background-color 0.3s ease,color 0.3s ease; /* تم تصحيح `0.3 ease` إلى `0.3s ease` */
+    transition: background-color 0.3s ease,color 0.3s ease;
 }
 .remove-btn:hover{
     background-color: var(--brown);
@@ -557,7 +560,6 @@ html,body{
 }
 .Done-btn:hover {
     background-color: var(--hover);
-    /* تم إزالة transform: scale(1.1); حيث كان يتعارض مع translateY(-2px); */
     transform: translateY(-2px);
 }
 #foot{
@@ -598,6 +600,7 @@ html,body{
         max-height: 14vh;
     }
     #main{
+        height: calc(100vh - 16vh -10vh);
         padding: 1.5vh;
         gap: 2.5vh;
     }
@@ -618,7 +621,7 @@ html,body{
     }
     .task-item{
         padding: 10px 12px;
-        /* تم إزالة margin-bottom: 1.2vh; لأن الـ gap في #task-list يتعامل مع المسافات الآن */
+        margin-bottom: 0; /* <--- تأكد من إزالة الهامش السفلي هنا */
         font-size: 0.95em;
     }
     .Done-btn , .remove-btn{
@@ -637,8 +640,10 @@ html,body{
         max-height: 10vh;
     }
     #main{
+        /* تحديد الارتفاع بشكل صريح لحل مشكلة 100vh على بعض المتصفحات المحمولة */
+        height: calc(100vh - 12vh - 8vh); /* 100vh - ارتفاع الرأس - ارتفاع التذييل */
         padding: 1vh;
-        gap: 1.5vh;
+        gap: 1.5vh
     }
     #main__sect01{
         flex-direction: column;
@@ -658,14 +663,13 @@ html,body{
     }
     #main__sect02{
         padding:1.5vh;
-        /* تم إزالة height: 65vh; هنا، flex-grow: 1; هو المسؤول عن الارتفاع */
     }
     #main__sect02 h2{
         margin-bottom: 1vh;
         font-size: 1.1em;
     }
     #task-list{
-        gap: 0.8vh; /* تقليل المسافة أكثر للموبايل */
+        gap: 0.8vh;
     }
     .task-item{
         flex-direction: column;
@@ -673,6 +677,7 @@ html,body{
         padding: 8px;
         font-size: 0.85em;
         gap: 6px;
+        margin-bottom: 0; /* <--- تأكد من إزالة الهامش السفلي هنا */
     }
     .task-item span{
         margin-right: 0;
