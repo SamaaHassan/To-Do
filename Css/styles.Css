@@ -354,6 +354,7 @@ html,body{
     }
 }  */
 /*-------------Reset------------*/
+/*-------------Reset------------*/
 *{
     margin: 0;
     padding: 0;
@@ -376,20 +377,35 @@ html,body{
 }
 html,body{
     width: 100%;
-    height: 100%; /* يجب أن يأخذ الـ html والـ body كامل ارتفاع النافذة */
+    height: 100%;
     overflow: hidden; /* <--- مهم جداً: لمنع أي تمرير للصفحة بأكملها */
+
+    /* **بداية التعديلات للـ Grid** */
+    display: grid; /* جعل الـ body حاوية Grid */
+    /* تحديد الصفوف: صف للرأس (ثابت)، صف للمحتوى الرئيسي (يأخذ المساحة المتبقية)، صف للتذييل (ثابت) */
+    grid-template-rows: auto 1fr auto; /* auto for header, 1fr for main, auto for footer */
+    /* **نهاية التعديلات للـ Grid** */
 }
+
 /*-----------------container------------*/
+/* بما أننا نستخدم الـ body كحاوية Grid، لن نحتاج إلى #container بنفس الوظيفة */
+/* يمكننا إزالة #container من HTML أو تركها كـ wrapper بسيط بدون خصائص عرض */
+/* إذا أردتِ إزالة #container، تذكري تعديل الـ HTML أيضاً */
+/* لأغراض الاختبار، سنبقيها حالياً ونتجاهل بعض خصائصها */
 #container{
     width: 100vw;
-    height: 100vh; /* <--- مهم جداً: الـ container يجب أن يأخذ كامل ارتفاع الـ viewport */
-    display: flex;
-    flex-direction: column;
+    /* height: 100vh;  تم إزالتها لأن الـ body سيتحكم في الارتفاع الآن */
+    /* display: flex; تم إزالتها لأن الـ body هو Grid الآن */
+    /* flex-direction: column; تم إزالتها */
+    /* لضمان عدم تعارضها، سنعيد تعريفها كـ block عادي إذا لم نحذفها من HTML */
+    display: block;
+    height: 100%; /* تأكد من أن تأخذ ارتفاع الخلية في الـ Grid */
 }
+
 /*-----------------header------------*/
 #head{
     width: 100%;
-    height: 18vh; /* <--- ارتفاع ثابت للرأس */
+    /* height: 18vh;  <--- يمكن إزالته أو تركه كحد أدنى، لكن Grid ستتحكم */
     background: linear-gradient(to bottom, #EFE8E5, #D7CCC8, #BCAAA4);
     display: flex;
     justify-content: center;
@@ -397,7 +413,7 @@ html,body{
     box-shadow:-1px 4px 11px 0px rgba(0,0,0,0.75) ;
     -webkit-box-shadow: -1px 4px 11px 0px rgba(0,0,0,0.75);
     -moz-box-shadow: -1px 4px 11px 0px rgba(0,0,0,0.75);
-    flex-shrink: 0; /* <--- يمنع تقلص الرأس */
+    /* flex-shrink: 0; هذا لم يعد ضرورياً مع Grid */
 }
 #logo{
     width: 300px;
@@ -407,8 +423,8 @@ html,body{
 }
 #main{
     width: 100%;
-    flex-grow: 1; /* <--- سيأخذ كل المساحة المتبقية بين الرأس والتذييل على الشاشات الكبيرة */
-    display: flex;
+    /* flex-grow: 1; هذا لم يعد ضرورياً مع Grid */
+    display: flex; /* لا يزال flexbox جيداً للمحتوى الداخلي */
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
@@ -506,7 +522,7 @@ html,body{
     background-color: var(--light-brwon);
     color: #fff;
     padding: 12px 15px;
-    /* تم إزالة margin-bottom هنا لأن الـ gap في #task-list يتعامل مع المسافات الآن */
+    margin-bottom: 0; /* <--- تأكيد إزالة أي هامش سفلي هنا */
     border-radius: 10px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     font-size: 1em;
@@ -564,14 +580,14 @@ html,body{
 }
 #foot{
     width: 100%;
-    height: 10vh; /* <--- ارتفاع ثابت للتذييل */
+    /* height: 10vh; <--- يمكن إزالته أو تركه كحد أدنى، لكن Grid ستتحكم */
     background: linear-gradient(to right, #EFE8E5, #D7CCC8, #BCAAA4);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     color: var(--dark-brwon);
-    flex-shrink: 0; /* <--- يمنع تقلص التذييل */
+    /* flex-shrink: 0; هذا لم يعد ضرورياً مع Grid */
 }
 
 @keyframes shake {
@@ -592,15 +608,15 @@ html,body{
 
 /* For screens smaller than 780px (e.g., tablets and large phones) */
 @media (max-width: 780px) {
+    /* لا تزال هذه القواعد تعمل بشكل جيد مع Grid طالما أنها لا تتعارض مع تخطيط Grid الأساسي */
     #head{
-        height: 16vh;
+        height: 16vh; /* تحديد ارتفاع للرأس في Grid */
     }
     #logo{
         width: 200px;
         max-height: 14vh;
     }
     #main{
-        height: calc(100vh - 16vh -10vh);
         padding: 1.5vh;
         gap: 2.5vh;
     }
@@ -621,27 +637,28 @@ html,body{
     }
     .task-item{
         padding: 10px 12px;
-        margin-bottom: 0; /* <--- تأكد من إزالة الهامش السفلي هنا */
+        margin-bottom: 0; /* <--- تأكيد إزالة الهامش السفلي هنا */
         font-size: 0.95em;
     }
     .Done-btn , .remove-btn{
         padding: 7px 11px;
         font-size: 0.85em;
     }
+    #foot{
+        height: 10vh; /* تحديد ارتفاع للتذييل في Grid */
+    }
 }
 
 /* For screens smaller than 480px (e.g., most mobile phones) */
 @media (max-width:480px) {
     #head{
-        height: 12vh;
+        height: 12vh; /* تقليل ارتفاع الرأس للموبايل */
     }
     #logo{
         width: 120px;
         max-height: 10vh;
     }
     #main{
-        /* تحديد الارتفاع بشكل صريح لحل مشكلة 100vh على بعض المتصفحات المحمولة */
-        height: calc(100vh - 12vh - 8vh); /* 100vh - ارتفاع الرأس - ارتفاع التذييل */
         padding: 1vh;
         gap: 1.5vh
     }
@@ -677,7 +694,7 @@ html,body{
         padding: 8px;
         font-size: 0.85em;
         gap: 6px;
-        margin-bottom: 0; /* <--- تأكد من إزالة الهامش السفلي هنا */
+        margin-bottom: 0; /* <--- تأكيد إزالة الهامش السفلي هنا */
     }
     .task-item span{
         margin-right: 0;
@@ -692,7 +709,7 @@ html,body{
         font-size: 0.75em;
     }
     #foot{
-        height: 8vh;
+        height: 8vh; /* <--- ارتفاع ثابت للتذييل للموبايل */
     }
     #foot p{
         font-size: 0.75em;
