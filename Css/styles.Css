@@ -377,12 +377,14 @@ html,body{
 html,body{
     width: 100%;
     height: 100%; /* يجب أن يأخذ الـ html والـ body كامل ارتفاع النافذة */
-    overflow: hidden; /* <--- مهم جداً: لمنع أي تمرير للصفحة بأكملها */
+    overflow-x: hidden; /* <--- مهم جداً: لمنع أي تمرير للصفحة بأكملها */
+    overflow-y: auto;
+    
 }
 /*-----------------container------------*/
 #container{
     width: 100vw;
-    height: 100vh; /* <--- مهم جداً: الـ container يجب أن يأخذ كامل ارتفاع الـ viewport */
+    min-height: 100vh; /* <--- مهم جداً: الـ container يجب أن يأخذ كامل ارتفاع الـ viewport */
     display: flex;
     flex-direction: column;
 }
