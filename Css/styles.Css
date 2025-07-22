@@ -22,15 +22,15 @@
 }
 html,body{
     width: 100%;
-    min-height: 100vh;
-    overflow-x: hidden;
-    overflow-y: auto;
+    height: 100%;
+    /* min-height: 100vh; */
+    overflow: hidden;
 }
 /*-----------------container------------*/
 #container{
     width: 100vw;
-    min-height: 100vh;
-    height: auto;
+    height: 100vh;
+    /* height: auto; */
     display: flex;
     flex-direction: column;
 }
@@ -66,7 +66,7 @@ html,body{
     gap:2.5vh;
     background-color: #FCFAF7;
     min-height: 0;
-    /* overflow: hidden; */
+    overflow: hidden;
 
 }
 #main__sect01{
@@ -99,7 +99,7 @@ html,body{
     color: var(--dark-brwon);
     background-color: #fdfbf8;
     /* overflow-y: auto; */
-    /* overflow: hidden; */
+    overflow: hidden;
     min-height: 0;
 }
 #main__sect02 h2{
@@ -275,6 +275,9 @@ html,body{
         font-size: 1em;
         height: 5.5vh;
     }
+    #task-list{
+        gap: 1vh;
+    }
     .task-item{
         padding: 10px 12px;
         margin-bottom: 1.2vh;
@@ -320,6 +323,9 @@ html,body{
     #main__sect02 h2{
         margin-bottom: 1vh;
         font-size: 1.1em;
+    }
+    #task-list{
+        gap: 0.8vh;
     }
     .task-item{
         flex-direction: column;
