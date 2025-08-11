@@ -358,7 +358,7 @@ html,body{
     margin: 0;
     padding: 0;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    box-sizing: border-box; /* التأكد من وجودها ومهمة جداً لضمان حساب الأحجام بشكل صحيح */
+    box-sizing: border-box; 
 }
 /*-----------------Root Theme -------------------*/
 :root{
@@ -374,22 +374,22 @@ html,body{
 }
 html,body{
     width: 100%;
-    height: 100%; /* يجب أن يأخذ الـ html والـ body كامل ارتفاع النافذة */
-    overflow-x: hidden; /* <--- مهم جداً: لمنع أي تمرير للصفحة بأكملها */
+    height: 100%;
+    overflow-x: hidden; 
     overflow-y: auto;
     
 }
 /*-----------------container------------*/
 #container{
     width: 100vw;
-    min-height: 100vh; /* <--- مهم جداً: الـ container يجب أن يأخذ كامل ارتفاع الـ viewport */
+    min-height: 100vh; 
     display: flex;
     flex-direction: column;
 }
 /*-----------------header------------*/
 #head{
     width: 100%;
-    height: 18vh; /* <--- ارتفاع ثابت للرأس */
+    height: 18vh; 
     background: linear-gradient(to bottom, #EFE8E5, #D7CCC8, #BCAAA4);
     display: flex;
     justify-content: center;
@@ -397,7 +397,7 @@ html,body{
     box-shadow:-1px 4px 11px 0px rgba(0,0,0,0.75) ;
     -webkit-box-shadow: -1px 4px 11px 0px rgba(0,0,0,0.75);
     -moz-box-shadow: -1px 4px 11px 0px rgba(0,0,0,0.75);
-    flex-shrink: 0; /* <--- يمنع تقلص الرأس */
+    flex-shrink: 0; 
 }
 #logo{
     width: 300px;
@@ -407,7 +407,7 @@ html,body{
 }
 #main{
     width: 100%;
-    flex-grow: 1; /* <--- سيأخذ كل المساحة المتبقية بين الرأس والتذييل على الشاشات الكبيرة */
+    flex-grow: 1; 
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -415,13 +415,13 @@ html,body{
     padding: 2vh;
     gap:2.5vh;
     background-color: #FCFAF7;
-    min-height: 0; /* <--- مهم: يسمح لـ `main` بالتقلص كعنصر flex داخلي */
-    overflow: hidden; /* <--- مهم: منع أي تمرير داخل main نفسه. التمرير سيكون فقط داخل #task-list */
+    min-height: 0; 
+    overflow: hidden;
 }
 #main__sect01{
     width: 90%;
     max-width: 600px;
-    height: auto; /* <--- سيأخذ الارتفاع الذي يحتاجه المحتوى تلقائيًا */
+    height: auto; 
     border-radius: 15px;
     display: flex;
     flex-direction: row;
@@ -431,12 +431,12 @@ html,body{
     padding:2vh;
     border: 1px solid var(--bord);
     background-color: #fdfbf8;
-    flex-shrink: 0; /* <--- يمنع تقلص هذا القسم */
+    flex-shrink: 0; 
 }
 #main__sect02 {
     width: 95%;
     max-width: 600px;
-    flex-grow: 1; /* <--- سيأخذ المساحة المتبقية داخل main */
+    flex-grow: 1;
     border: 2px solid var(--bord);
     border-radius: 15px;
     display: flex;
@@ -446,13 +446,12 @@ html,body{
     padding: 2vh;
     color: var(--dark-brwon);
     background-color: #fdfbf8;
-    overflow: hidden; /* <--- مهم: منع أي تمرير هنا، التمرير سيكون داخل #task-list فقط */
-    min-height: 0; /* <--- مهم: يسمح لـ `main__sect02` بالتقلص كعنصر flex داخلي */
-}
+    overflow: hidden; 
+    min-height: 0; }
 #main__sect02 h2{
     margin-bottom: 2vh;
     color: var(--brown);
-    flex-shrink: 0; /* <--- يمنع تقلص العنوان */
+    flex-shrink: 0; 
 }
 #task-input {
     flex-grow: 1;
@@ -490,41 +489,87 @@ html,body{
     width: 95%;
     padding: 0;
     margin: 0;
-    flex-grow: 1; /* <--- لجعل القائمة تتمدد لملء المساحة المتاحة */
-    overflow-y: auto !important; /* <--- هنا المكان الصحيح والوحيد للسماح بالتمرير العمودي */
-    overflow-x: hidden; /* <--- لمنع التمرير الأفقي هنا */
-    min-height: 0; /* <--- مهم: يسمح لـ `task-list` بالتقلص/التمرير عندما يزيد محتواها عن المساحة المتاحة */
-    display: flex; /* <--- لجعل عناصر القائمة مرنة */
-    flex-direction: column; /* <--- لجعل عناصر القائمة تظهر بشكل عمودي */
-    gap: 1.5vh; /* <--- لتحديد المسافة بين عناصر المهام */
-}
+    flex-grow: 1; 
+    overflow-y: auto !important; 
+    overflow-x: hidden; 
+    min-height: 0; 
+    display: flex; 
+    flex-direction: column; 
+    gap: 1.5vh; }
 .task-item {
     border: 1px solid var(--light-brwon);
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     background-color: var(--light-brwon);
     color: #fff;
     padding: 12px 15px;
-    /* تم إزالة margin-bottom هنا لأن الـ gap في #task-list يتعامل مع المسافات الآن */
     border-radius: 10px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     font-size: 1em;
     width: 100%;
     flex-shrink: 0;
 }
+.task-content-wrapper{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 10px;
+}
+.task-checkbox{
+    width: 20px;
+    height: 20px;
+    margin-left: 10px ;
+    cursor: pointer;
+    accent-color: var(--dark-brwon);
+}
 .task-item span{
     word-break: break-word;
-    margin-right: 10px;
+    /* margin-right: 10px; */
     flex-grow: 1;
+    color: var(--dark-brwon);
+}
+.task-item-Done span {
+    text-decoration: line-through;
+    color: var(--brown);
 }
 .task-actions{
     display: flex;
     gap: 10px;
     align-items: center;
     flex-shrink: 0;
+    width: 100%;
+    justify-content: flex-end;
 }
-.Done-btn {
+.notes-btn{
+    background-color: var(--sec-btn);
+    color: var(--dark-brwon);
+    border: none;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer ;
+    font-size: 0.9em;
+    transition: background-color 0.3s ease;
+}
+.notes-btn:hover{
+    background-color: var(--hover);
+    color: #fff;
+}
+.notes-box{
+    width: 100%;
+    min-height: 80px;
+    padding: 10px;
+    margin-top: 10px;
+    border: 1px solid var(--bord);
+    border-radius: 8px;
+    font-size: 0.9em;
+    resize: vertical;
+    background-color: #fdfbf8;
+    color: var(--dark-brwon);
+
+}
+/* .Done-btn {
     background-color: var(--dark-btn);
     color: #fff;
     border: none;
@@ -533,7 +578,7 @@ html,body{
     cursor: pointer;
     font-size: 0.9em;
     transition: background-color 0.3s ease;
-}
+} */
 .remove-btn {
     background-color: #d3cdc9;
     color: var(--dark-brwon);
@@ -549,29 +594,29 @@ html,body{
     background-color: var(--brown);
     color: #fff;
 }
-.Done {
+/* .Done {
     background-color: var(--yellow);
     color: var(--dark-green);
     text-decoration: line-through;
-}
-.Done-btn.Done-active{
+} */
+/* .Done-btn.Done-active{
     background-color: var(--hover);
     color: #fff;
 }
 .Done-btn:hover {
     background-color: var(--hover);
     transform: translateY(-2px);
-}
+} */
 #foot{
     width: 100%;
-    height: 10vh; /* <--- ارتفاع ثابت للتذييل */
+    height: 10vh; 
     background: linear-gradient(to right, #EFE8E5, #D7CCC8, #BCAAA4);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     color: var(--dark-brwon);
-    flex-shrink: 0; /* <--- يمنع تقلص التذييل */
+    flex-shrink: 0; 
 }
 
 @keyframes shake {
@@ -617,11 +662,11 @@ html,body{
         height: 5.5vh;
     }
     #task-list{
-        gap: 1vh; /* تقليل المسافة بين المهام في الشاشات الصغيرة */
+        gap: 1vh; 
     }
     .task-item{
         padding: 10px 12px;
-        margin-bottom: 0; /* <--- تأكد من إزالة الهامش السفلي هنا */
+        margin-bottom: 0; 
         font-size: 0.95em;
     }
     .Done-btn , .remove-btn{
@@ -640,8 +685,7 @@ html,body{
         max-height: 10vh;
     }
     #main{
-        /* تحديد الارتفاع بشكل صريح لحل مشكلة 100vh على بعض المتصفحات المحمولة */
-        height: calc(100vh - 12vh - 8vh); /* 100vh - ارتفاع الرأس - ارتفاع التذييل */
+        height: calc(100vh - 12vh - 8vh); 
         padding: 1vh;
         gap: 1.5vh
     }
@@ -677,10 +721,14 @@ html,body{
         padding: 8px;
         font-size: 0.85em;
         gap: 6px;
-        margin-bottom: 0; /* <--- تأكد من إزالة الهامش السفلي هنا */
+        margin-bottom: 0; 
+    }
+    .task-content-wrapper{
+        margin-bottom: 6px;
     }
     .task-item span{
         margin-right: 0;
+        width: 100px;
     }
     .task-actions{
         width: 100%;
